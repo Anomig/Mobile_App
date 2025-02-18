@@ -1,38 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import ProductCard from './components/ProductCard.js';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./screens/HomeScreen.js";
+import ProductScreen from "./screens/ProductDetails.js";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Onze bestsellers!</Text>
-      <View style={styles.productsContainer}>
-        <ProductCard artist="Linkin Park" title="Numb" />
-        <ProductCard artist="BTS" title="No" />
-        <ProductCard artist="Pink Floyd" title="The Wall" />
-        <ProductCard artist="Queen" title="Bohemian Rhapsody" />
-        <ProductCard/>
-      </View>
-      <StatusBar style="auto" />
-    </ScrollView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Product" component={ProductScreen} />
+        </Stack.Navigator>
+        </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    paddingTop: 50,
-    paddingHorizontal: 20,
-  },
-  title: {
-    fontSize: 30,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  productsContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap', 
-    justifyContent: 'space-between',
-  },
-});
