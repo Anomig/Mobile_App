@@ -12,6 +12,10 @@ export default function App() {
         <ProductCard artist="Pink Floyd" title="The Wall" />
         <ProductCard artist="Queen" title="Bohemian Rhapsody" />
         <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
+        <ProductCard/>
       </View>
       <StatusBar style="auto" />
     </ScrollView>
