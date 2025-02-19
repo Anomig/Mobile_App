@@ -1,42 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
-import ProductCard from '../components/ProductCard.js';
+import React from "react";
+import {View, Text, StyleSheet} from "react-native";
 
-export default function App() {
+const ProductDetail = () => {
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.title}>Onze bestsellers!</Text>
-      <View style={styles.productsContainer}>
-        <ProductCard artist="Linkin Park" title="Numb" />
-        <ProductCard artist="BTS" title="No" />
-        <ProductCard artist="Pink Floyd" title="The Wall" />
-        <ProductCard artist="Queen" title="Bohemian Rhapsody" />
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-        <ProductCard/>
-      </View>
-      <StatusBar style="auto" />
-    </ScrollView>
+    <View style={styles.container}>
+      <Text>Product detail Screen </Text>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    paddingTop: 50,
-    paddingHorizontal: 20,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  artist: {
+    fontSize: 30,
+    fontWeight: "bold",
   },
   title: {
-    fontSize: 30,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  productsContainer: {
-    flexDirection: 'row',  
-    flexWrap: 'wrap', 
-    justifyContent: 'space-between',
+    fontSize: 20,
+    color: "#666",
   },
 });
+
+export default ProductDetail;

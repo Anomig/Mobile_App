@@ -1,8 +1,10 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
+
 import ProductCard from '../components/ProductCard.js';
 
-export default function App() {
+const HomeScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Onze bestsellers!</Text>
@@ -40,3 +42,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
+
+export default HomeScreen;

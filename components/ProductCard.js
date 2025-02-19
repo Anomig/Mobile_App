@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title" }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Image 
@@ -10,6 +13,13 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title" }) => 
       />
       <Text style={styles.artist}>{artist}</Text>
       <Text style={styles.title}>{title}</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate("Product")}
+      >
+        <Text style={styles.buttonText}>Details</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -38,6 +48,12 @@ const styles = StyleSheet.create({
     width: 130,
     height: 130,
     borderRadius: 5,
+  },
+  button: {
+    backgroundColor: 'grey',
+    padding: 5,
+    borderRadius: 5,
+    marginTop: 10,
   },
 });
 
