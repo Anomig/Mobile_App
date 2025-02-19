@@ -16,7 +16,7 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title" }) => 
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Product")}
+        onPress={() => navigation.navigate("Product", { artist, title })}
       >
         <Text style={styles.buttonText}>Details</Text>
       </TouchableOpacity>
