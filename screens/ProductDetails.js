@@ -60,6 +60,28 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: "green",
   },
+  quantityContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  button: {
+    backgroundColor: "grey",
+    padding: 10,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: "white",
+  },
+  quantityText: {
+    fontSize: 20,
+    marginHorizontal: 10,
+  },
+  totalPrice: {
+    fontSize: 20,
+    marginLeft: 20,
+  },
 });
 
 export default ProductDetail;
