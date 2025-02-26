@@ -2,13 +2,14 @@ import React from "react";
 import {View, Text, Image, StyleSheet} from "react-native";
 
 const ProductDetail = ({route}) => {
-  const {artist, title, image} = route.params;
+  const {artist, title, image, price} = route.params;
 
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
       <Text style={styles.artist}>{artist}</Text>
       <Text style={styles.title}>{title}</Text>
+      <Text style={styles.price}>{price}</Text>
     </View>
   );
 };
@@ -31,6 +32,10 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 5,
+  },
+  price: {
+    fontSize: 30,
+    color: "green",
   },
 });
 
