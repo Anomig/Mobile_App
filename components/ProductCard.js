@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image, price }) => {
+const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image, price, onPress }) => {
   const navigation = useNavigation();
 
   return (
@@ -17,7 +17,7 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate("Product", { artist, title, image, price })}
+        onPress={(onPress) => navigation.navigate("Product", { artist, title, image, price })}
       >
         <Text style={styles.buttonText}>Details</Text>
       </TouchableOpacity>

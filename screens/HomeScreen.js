@@ -12,11 +12,11 @@ const HomeScreen = ({navigation}) => {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Onze bestsellers!</Text>
       <View style={styles.productsContainer}>
-        <ProductCard artist="Linkin Park" title="Numb" image={Vinyl1} price="€19,99" />
-        <ProductCard artist="BTS" title="No" image={Vinyl2} price="€30" />
-        <ProductCard artist="Pink Floyd" title="The Wall" image={Vinyl1} price="€20" />
-        <ProductCard artist="Queen" title="Bohemian Rhapsody" image={Vinyl2} price="€19,99" />
-        <ProductCard/>
+        <ProductCard artist="Linkin Park" title="Numb"                image={Vinyl1} price="€19,99" />
+        <ProductCard artist="BTS"         title="No"                  image={Vinyl2} price="€30" />
+        <ProductCard artist="Pink Floyd"  title="The Wall"            image={Vinyl1} price="€20" />
+        <ProductCard artist="Queen"       title="Bohemian Rhapsody"   image={Vinyl2} price="€19,99" />
+        <ProductCard artist="Muse"        title="Undisclosed desire"  image={Vinyl1} price="€20,99"  />
         <ProductCard/>
         <ProductCard/>
         <ProductCard/>
