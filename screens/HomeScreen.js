@@ -4,15 +4,18 @@ import { StyleSheet, View, ScrollView, Text } from 'react-native';
 
 import ProductCard from '../components/ProductCard.js';
 
+import Vinyl1 from '../assets/fotos/Vinyl.jpg';
+import Vinyl2 from '../assets/fotos/Vinyl2.jpg';
+
 const HomeScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Onze bestsellers!</Text>
       <View style={styles.productsContainer}>
-        <ProductCard artist="Linkin Park" title="Numb" />
-        <ProductCard artist="BTS" title="No" />
-        <ProductCard artist="Pink Floyd" title="The Wall" />
-        <ProductCard artist="Queen" title="Bohemian Rhapsody" />
+        <ProductCard artist="Linkin Park" title="Numb" image={Vinyl1} />
+        <ProductCard artist="BTS" title="No" image={Vinyl2} />
+        <ProductCard artist="Pink Floyd" title="The Wall" image={Vinyl1} />
+        <ProductCard artist="Queen" title="Bohemian Rhapsody" image={Vinyl2} />
         <ProductCard/>
         <ProductCard/>
         <ProductCard/>

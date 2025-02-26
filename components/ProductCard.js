@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title" }) => {
+const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image }) => {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
       <Image 
-        source={require('../assets/fotos/Vinyl.jpg')} 
+        source={image} 
         style={styles.image}
       />
       <Text style={styles.artist}>{artist}</Text>
