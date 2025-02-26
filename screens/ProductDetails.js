@@ -1,16 +1,39 @@
-import React from "react";
-import {View, Text, Image, StyleSheet} from "react-native";
+import React, { useState } from "react";
+import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 
 const ProductDetail = ({route}) => {
   const {artist, title, image, price} = route.params;
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => setQuantity(quantity + 1);
+  const decreaseQuantity = () =>{
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  }
 
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
       <Text style={styles.artist}>{artist}</Text>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.price}>{price}</Text>
+      <Text style={styles.price}>€{price}</Text>
+
+      <View style={styles.quantityContainer}>
+        <TouchableOpacity style={styles.button} onPress={decreaseQuantity}>
+          <Text style={styles.buttonText}>-</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.quantityText}>{quantity}</Text>
+
+        <TouchableOpacity style={styles.button} onPress={increaseQuantity}>
+          <Text style={styles.buttonText}>+</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.totalPrice}>Total: €{price * quantity}</Text>
+      </View>
     </View>
+
   );
 };
 

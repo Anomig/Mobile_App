@@ -13,7 +13,7 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image
       />
       <Text style={styles.artist}>{artist}</Text>
       <Text style={styles.title}>{title}</Text>
-      <Text style={styles.price}>{price}</Text>
+      <Text style={styles.price}>€{price}</Text>
 
       <TouchableOpacity
         style={styles.button}
