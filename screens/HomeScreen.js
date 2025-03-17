@@ -10,16 +10,7 @@ import ProductCard from '../components/ProductCard.js';
 const HomeScreen = ({navigation}) => {
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      "https://api.webflow.com/v2/sites/67a7c36b22e584e07b9af73f/products/",
-      {
-        headers: {
-          Authorization
-            : "Bearer 1ee8322f9125015a0f2f555e36abb1ecce6534aaac4cb8e436deabe7918bb361",
-        },
-      }
-    )
+  
 
     .then((response) => response.json())
     .then((data) => 
