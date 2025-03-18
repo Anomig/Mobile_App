@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
 
 const ProductDetail = ({route}) => {
-  const {artist, title, image, price} = route.params;
+  const {artist, title, image, price, description} = route.params;
   const [quantity, setQuantity] = useState(1);
 
   const increaseQuantity = () => setQuantity(quantity + 1);
@@ -17,6 +17,7 @@ const ProductDetail = ({route}) => {
       <Image source={image} style={styles.image} />
       <Text style={styles.artist}>{artist}</Text>
       <Text style={styles.title}>{title}</Text>
+      <Text style={styles.description}>{description}</Text>
       <Text style={styles.price}>€{price}</Text>
 
       <View style={styles.quantityContainer}>

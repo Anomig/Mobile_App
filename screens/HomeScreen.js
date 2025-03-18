@@ -28,6 +28,7 @@ const HomeScreen = ({navigation}) => {
           id: item.product.id,
           title: item.product.fieldData.name,
           subtitle: item.product.fieldData.songtitle,
+          description: item.product.fieldData.description,
           price: (item.skus[0]?.fieldData.price.value || 0) / 100,
           image: {uri:item.skus[0]?.fieldData["main-image"]?.url},
         }))
@@ -45,6 +46,7 @@ const HomeScreen = ({navigation}) => {
             key={product.id}
             artist={product.title}
             title={product.subtitle}
+            description={product.description}
             image={product.image}
             price={product.price}
             onPress={() => navigation.navigate("Product", product)}
