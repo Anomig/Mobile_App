@@ -10,7 +10,16 @@ import ProductCard from '../components/ProductCard.js';
 const HomeScreen = ({navigation}) => {
   const [products, setProducts] = useState([]);
 
-  
+  useEffect(() => {
+    fetch(
+      "https://api.webflow.com/v2/sites/67a7c36b22e584e07b9af73f/products/",
+      {
+        headers: {
+          Authorization
+            : "Bearer 1ee8322f9125015a0f2f555e36abb1ecce6534aaac4cb8e436deabe7918bb361",
+        },
+      }
+    )
 
     .then((response) => response.json())
     .then((data) => 
@@ -18,7 +27,7 @@ const HomeScreen = ({navigation}) => {
         data.items.map((item) => ({
           id: item.product.id,
           title: item.product.fieldData.name,
-          subtitle: item.product.fieldData.subtitle,
+          subtitle: item.product.fieldData.songtitle,
           price: (item.skus[0]?.fieldData.price.value || 0) / 100,
           image: {uri:item.skus[0]?.fieldData["main-image"]?.url},
         }))
@@ -34,8 +43,8 @@ const HomeScreen = ({navigation}) => {
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            artist={product.subtitle}
-            title={product.title}
+            artist={product.title}
+            title={product.subtitle}
             image={product.image}
             price={product.price}
             onPress={() => navigation.navigate("Product", product)}
