@@ -51,9 +51,11 @@ const HomeScreen = ({navigation}) => {
   }
   , []);
 
-  const filterProduct = selectedCategory
-    ? products.filter((product) => product.category === selectedCategory)
-    : products;
+  const filterProduct = products.filter (
+    (p) =>
+    (selectedCategory === "" || p.category === selectedCategory) &&
+    p.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <ScrollView style={styles.container}>
@@ -136,11 +138,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   input: {
-    height: 40,
+    height: 45,
     margin: 12,
     borderWidth: 1,
     padding: 10,
   },
+
 });
 
 export default HomeScreen;
