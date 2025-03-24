@@ -20,6 +20,7 @@ const categories = {
 
 const HomeScreen = ({navigation}) => {
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetch(
@@ -42,21 +43,37 @@ const HomeScreen = ({navigation}) => {
           description: item.product.fieldData.description,
           price: (item.skus[0]?.fieldData.price.value || 0) / 100,
           image: {uri:item.skus[0]?.fieldData["main-image"]?.url},
+          category: categories[item.product.fieldData.category[0]] || "Unknown",
         }))
       ))
     .catch((error) => console.error(error));
   }
   , []);
 
+  const filterProduct = selectedCategory
+    ? products.filter((product) => product.category === selectedCategory)
+    : products;
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Onze bestsellers!</Text>
       <View style={styles.productsContainer}>
+        <Picker
+          selectedValue={selectedCategory}
+          onValueChange={setSelectedCategory}
+          style={styles.picker}
+        >
+          <Picker.Item label="All" value="" />
+          {[...new Set(products.map((product) => product.category))].map((category) => (
+            <Picker.Item key={category} label={category} value={category} />  
+          ))}
+        </Picker>
         {products.map((product) => (
           <ProductCard
             key={product.id}
             artist={product.title}
             title={product.subtitle}
+            category={product.category}
             description={product.description}
             image={product.image}
             price={product.price}
@@ -105,6 +122,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap', 
     justifyContent: 'space-between',
+  },
+  picker: {
+    height: 50,
+    width: 150,
+    marginBottom: 20,
   },
 });
 
