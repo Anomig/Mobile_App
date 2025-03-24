@@ -4,8 +4,19 @@ import { StyleSheet, View, ScrollView, Text } from 'react-native';
 
 import ProductCard from '../components/ProductCard.js';
 
+import { Picker } from '@react-native-picker/picker';
+
 // import Vinyl1 from '../assets/fotos/Vinyl.jpg';
 // import Vinyl2 from '../assets/fotos/Vinyl2.jpg';
+
+const categories = {
+  "": "All",
+  "67d8786a6bd8399d89813e5d": "R&B",
+  "67d878633ff4e0c6ac7ccc74":"Kpop",
+  "67d8785b1fce3f539bf1971e":"Jazz",
+  "67d8784c3ab1606f492cedf3":"Rock",
+  "67d87845dc0055dc8cb89a9e":"Pop",
+}
 
 const HomeScreen = ({navigation}) => {
   const [products, setProducts] = useState([]);
