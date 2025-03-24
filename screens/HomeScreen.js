@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, TextInput } from 'react-native';
 
 import ProductCard from '../components/ProductCard.js';
 
@@ -21,6 +21,7 @@ const categories = {
 const HomeScreen = ({navigation}) => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     fetch(
@@ -57,6 +58,12 @@ const HomeScreen = ({navigation}) => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Onze bestsellers!</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Search..."
+        value={searchQuery}
+        onChangeText={setSearchQuery}
+      />
       <View style={styles.productsContainer}>
         <Picker
           selectedValue={selectedCategory}
@@ -127,6 +134,12 @@ const styles = StyleSheet.create({
     height: 50,
     width: 150,
     marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
