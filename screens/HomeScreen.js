@@ -68,7 +68,7 @@ const HomeScreen = ({navigation}) => {
             <Picker.Item key={category} label={category} value={category} />  
           ))}
         </Picker>
-        {products.map((product) => (
+        {filterProduct.map((product) => (
           <ProductCard
             key={product.id}
             artist={product.title}
