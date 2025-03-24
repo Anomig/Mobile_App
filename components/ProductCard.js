@@ -28,7 +28,7 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image
 
 const styles = StyleSheet.create({
   container: {
-    width: 160, 
+    width: 150, 
     backgroundColor: '#f8f8f8',
     padding: 10,
     margin: 10,
