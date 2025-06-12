@@ -1,10 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 
-const stripHtmlTags = (html) => {
-  return html.replace(/<\/?[^>]+(>|$)/g, "");
-};
-
 const BlogDetailScreen = ({ route }) => {
   const { post } = route.params;
 
@@ -13,7 +9,8 @@ const BlogDetailScreen = ({ route }) => {
       {post.image && <Image source={post.image} style={styles.image} />}
       <Text style={styles.title}>{post.title}</Text>
       <Text style={styles.date}>{post.date}</Text>
-      <Text style={styles.content}>{stripHtmlTags(post.content)}</Text>
+      <Text style={styles.content}>{post.description}</Text>
+      <Text style={styles.content}>{post.content}</Text>
     </ScrollView>
   );
 };

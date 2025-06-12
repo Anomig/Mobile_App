@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import BlogCard from '../components/BlogCard.js'; 
 
 const BlogScreen = ({ navigation }) => {
@@ -16,14 +16,16 @@ const BlogScreen = ({ navigation }) => {
     )
       .then((response) => response.json())
       .then((data) => {
+        data.items.forEach(item => console.log(item.fieldData)); 
         setPosts(data.items.map((item) => ({
           id: item.id,
           title: item.fieldData.name,  
-          image: item.fieldData['thumbnail-image'] && item.fieldData['thumbnail-image'][0] 
-            ? { uri: item.fieldData['thumbnail-image'][0].url } 
+          image: item.fieldData['thumbnail-image'] && item.fieldData['thumbnail-image'].url 
+            ? { uri: item.fieldData['thumbnail-image'].url } 
             : null,  
           date: item.fieldData['publish-date'], 
-          content: item.fieldData['content'] || 'No content available',  
+          content: item.fieldData['content'] || 'No content available', 
+          description: item.fieldData['description-2'] || 'No description available'
         })))
       })
       .catch((error) => console.error(error));
@@ -42,7 +44,7 @@ const BlogScreen = ({ navigation }) => {
           title={post.title}
           image={post.image}
           date={post.date}
-          excerpt={stripHtmlTags(post.content).slice(0, 120) + '...'}
+          excerpt={stripHtmlTags(post.description).slice(0, 120) + '...'}
           onPress={() => navigation.navigate('BlogDetail', { post })}
         />
       ))}
