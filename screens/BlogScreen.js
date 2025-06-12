@@ -16,7 +16,6 @@ const BlogScreen = ({ navigation }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.items); 
         setPosts(data.items.map((item) => ({
           id: item.id,
           title: item.fieldData.name,  
@@ -24,7 +23,7 @@ const BlogScreen = ({ navigation }) => {
             ? { uri: item.fieldData['thumbnail-image'][0].url } 
             : null,  
           date: item.fieldData['publish-date'], 
-          content: item.fieldData['blog-content'] || 'No content available',  
+          content: item.fieldData['content'] || 'No content available',  
         })))
       })
       .catch((error) => console.error(error));
@@ -38,18 +37,14 @@ const BlogScreen = ({ navigation }) => {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Blog 📚</Text>
       {posts.map((post) => (
-        <View key={post.id} style={styles.postContainer}>
-          {post.image ? (
-            <Image source={post.image} style={styles.image} />
-          ) : (
-            <Text>No Image Available</Text>
-          )}
-          <Text style={styles.postTitle}>{post.title}</Text>
-          <Text style={styles.postDate}>{post.date}</Text>
-          <Text style={styles.postContent}>
-            {stripHtmlTags(post.content)}
-          </Text>
-        </View>
+        <BlogCard
+          key={post.id}
+          title={post.title}
+          image={post.image}
+          date={post.date}
+          excerpt={stripHtmlTags(post.content).slice(0, 120) + '...'}
+          onPress={() => navigation.navigate('BlogDetail', { post })}
+        />
       ))}
     </ScrollView>
   );

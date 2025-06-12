@@ -19,8 +19,6 @@ const HomeScreen = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Lees onze Blog</Text>
       </TouchableOpacity>
-
-      {/* You can add more buttons here later like Contact, About, etc */}
     </View>
   );
 };
