@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, ScrollView, Text, TextInput } from 'react-native';
 
 import ProductCard from '../components/ProductCard.js';
+import { mapProduct } from '../utils/mapProduct';
 
 import { Picker } from '@react-native-picker/picker';
 
@@ -35,18 +36,9 @@ const ProductOverview = ({navigation}) => {
     )
 
     .then((response) => response.json())
-    .then((data) => 
-      setProducts(
-        data.items.map((item) => ({
-          id: item.product.id,
-          title: item.product.fieldData.name,
-          subtitle: item.product.fieldData.songtitle,
-          description: item.product.fieldData.description,
-          price: (item.skus[0]?.fieldData.price.value || 0) / 100,
-          image: {uri:item.skus[0]?.fieldData["main-image"]?.url},
-          category: categories[item.product.fieldData.category[0]] || "Unknown",
-        }))
-      ))
+    .then((data) =>
+      setProducts(data.items.map(mapProduct))
+      )
     .catch((error) => console.error(error));
   }
   , []);
