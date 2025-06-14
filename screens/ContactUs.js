@@ -10,9 +10,8 @@ const ContactUs = () => {
   };
 
   const handleSubmit = () => {
-    // Simulate form submission
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' }); // Clear the form
+    setFormData({ name: '', email: '', message: '' }); 
   };
 
   return (
