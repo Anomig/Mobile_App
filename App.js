@@ -10,27 +10,44 @@ import ProductDetail from "./screens/ProductDetails.js";
 import BlogScreen from "./screens/BlogScreen.js";
 import BlogDetailScreen from './screens/BlogDetailScreen';
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-function MainTabs() {
+function HomeStack() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Products" component={ProductOverview} />
-      <Tab.Screen name="Blog" component={BlogScreen} />
-    </Tab.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="HomeMain" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Product" component={ProductDetail} options={{headerShown: false}} />
+    </Stack.Navigator>
+  );
+}
+
+function ProductsStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="ProductsMain" component={ProductOverview} options={{ headerShown: false }} />
+      <Stack.Screen name="Product" component={ProductDetail} options={{headerShown: false}} />
+    </Stack.Navigator>
+  );
+}
+
+function BlogStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="BlogMain" component={BlogScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="BlogDetail" component={BlogDetailScreen} options={{ headerShown: false}} />
+    </Stack.Navigator>
   );
 }
 
 export default function App() {
   return (
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="Product" component={ProductDetail} />
-          <Stack.Screen name="BlogDetail" component={BlogDetailScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Products" component={ProductsStack} />
+        <Tab.Screen name="Blog" component={BlogStack} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }

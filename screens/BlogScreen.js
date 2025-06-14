@@ -37,7 +37,6 @@ const BlogScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Blog 📚</Text>
       {posts.map((post) => (
         <BlogCard
           key={post.id}
