@@ -11,6 +11,7 @@ import ProductDetail from "./screens/ProductDetails.js";
 import BlogScreen from "./screens/BlogScreen.js";
 import BlogDetailScreen from './screens/BlogDetailScreen';
 import CartScreen from './screens/CartScreen';
+import ContactUs from './screens/ContactUs';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -51,6 +52,7 @@ export default function App() {
           <Tab.Screen name="Products" component={ProductsStack} />
           <Tab.Screen name="Blog" component={BlogStack} />
           <Tab.Screen name="Cart" component={CartScreen} />
+          <Tab.Screen name="Contact" component={ContactUs} />
         </Tab.Navigator>
       </NavigationContainer>
     </CartProvider>
