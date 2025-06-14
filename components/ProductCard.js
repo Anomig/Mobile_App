@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image, price, description, category, onPress }) => {
   const navigation = useNavigation();
+  const { addToCart } = useCart();
 
   return (
     <View style={styles.container}>
@@ -22,6 +24,13 @@ const ProductCard = ({ artist = "Unknown Artist", title = "Unknown Title", image
         onPress={(onPress) => navigation.navigate("Product", { artist, title, image, price,category, description })}
       >
         <Text style={styles.buttonText}>Details</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => addToCart({ artist, title, image, price })}
+      >
+        <Text style={styles.buttonText}>Add to Cart</Text>
       </TouchableOpacity>
     </View>
   );
