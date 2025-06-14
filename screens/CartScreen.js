@@ -5,8 +5,6 @@ import { useCart } from '../context/CartContext';
 const CartScreen = () => {
   const { cart, removeFromCart, clearCart } = useCart();
 
-  const getTotal = () => cart.reduce((sum, item) => sum + (item.price || 0), 0).toFixed(2);
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Shopping Cart</Text>
@@ -16,18 +14,22 @@ const CartScreen = () => {
         <>
           <FlatList
             data={cart}
-            keyExtractor={item => item.id}
+            keyExtractor={(item, index) => item.id + '-' + index}
             renderItem={({ item }) => (
               <View style={styles.item}>
                 <Text>{item.artist} - {item.title}</Text>
-                <Text>€{item.price}</Text>
+                <Text>€{item.price} x {item.quantity}</Text>
+                <Text>Subtotal: €{(item.price * item.quantity).toFixed(2)}</Text>
                 <TouchableOpacity onPress={() => removeFromCart(item.id)}>
                   <Text style={styles.remove}>Remove</Text>
                 </TouchableOpacity>
               </View>
             )}
           />
-          <Text style={styles.total}>Total: €{getTotal()}</Text>
+          <Text style={styles.total}>
+            Total: €
+            {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+          </Text>
           <TouchableOpacity style={styles.clearButton} onPress={clearCart}>
             <Text style={styles.clearText}>Clear Cart</Text>
           </TouchableOpacity>

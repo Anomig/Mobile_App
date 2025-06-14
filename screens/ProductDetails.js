@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import {View, Text, Image, StyleSheet, TouchableOpacity} from "react-native";
+import { useCart } from '../context/CartContext';
 
 const ProductDetail = ({route}) => {
   const {artist, title, image, price, description, category} = route.params;
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () =>{
@@ -11,6 +13,10 @@ const ProductDetail = ({route}) => {
       setQuantity(quantity - 1);
     }
   }
+
+  const handleAddToCart = () => {
+    addToCart({ artist, title, image, price, description, category, quantity });
+  };
 
   return (
     <View style={styles.container}>
@@ -34,6 +40,10 @@ const ProductDetail = ({route}) => {
 
         <Text style={styles.totalPrice}>Total: €{price * quantity}</Text>
       </View>
+
+      <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
+        <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+      </TouchableOpacity>
     </View>
 
   );
@@ -83,6 +93,16 @@ const styles = StyleSheet.create({
   totalPrice: {
     fontSize: 20,
     marginLeft: 20,
+  },
+  addToCartButton: {
+    backgroundColor: "blue",
+    padding: 15,
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  addToCartButtonText: {
+    fontSize: 20,
+    color: "white",
   },
 });
 
