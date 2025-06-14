@@ -26,6 +26,7 @@ const ProductDetail = ({route}) => {
       <Text style={styles.category}>{category}</Text>
       <Text style={styles.description}>{description}</Text>
       <Text style={styles.price}>€{price}</Text>
+      
 
       <View style={styles.quantityContainer}>
         <TouchableOpacity style={styles.button} onPress={decreaseQuantity}>

@@ -12,7 +12,7 @@ export function mapProduct(item) {
     id: item.product.id,
     artist: item.product.fieldData.name,
     title: item.product.fieldData.songtitle,
-    description: item.product.fieldData.description,
+    description: item.product.fieldData['description-2'],
     price: (item.skus[0]?.fieldData.price.value || 0) / 100,
     image: { uri: item.skus[0]?.fieldData["main-image"]?.url },
     category: categories[item.product.fieldData.category[0]] || "Unknown",
