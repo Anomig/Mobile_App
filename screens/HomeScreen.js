@@ -36,8 +36,8 @@ const HomeScreen = ({ navigation }) => {
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            artist={product.title}
-            title={product.subtitle}
+            artist={product.artist}
+            title={product.title}
             image={product.image}
             price={product.price}
             onPress={() => navigation.navigate("Product", product)}

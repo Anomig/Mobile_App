@@ -72,10 +72,9 @@ const ProductOverview = ({navigation}) => {
         {filterProduct.map((product) => (
           <ProductCard
             key={product.id}
-            artist={product.title}
-            title={product.subtitle}
+            artist={product.artist}
+            title={product.title}
             category={product.category}
-            description={product.description}
             image={product.image}
             price={product.price}
             onPress={() => navigation.navigate("Product", product)}
